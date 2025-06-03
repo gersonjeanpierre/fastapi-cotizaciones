@@ -1,4 +1,3 @@
-# app/schemas/product.py
 from pydantic import BaseModel
 from typing import Optional, List
 from datetime import datetime
@@ -19,11 +18,14 @@ class Product(ProductBase):
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 
-    # Si quieres incluir opciones extras al leer un producto, descomenta:
-    # product_extra_options: List["ProductExtraOption"] = []
+    # Si quieres cargar las opciones extra junto con el producto,
+    # descomenta la siguiente línea y asegúrate de importar ProductExtraOption
+    # from .product_extra_option import ProductExtraOption # Importación relativa
+    # product_extra_options: List[ProductExtraOption] = []
 
     class Config:
         from_attributes = True
 
-# Para referencias circulares en Pydantic si ProductExtraOption se importa aquí
+# Si hay referencias circulares (ej. ProductExtraOption referencia a Product y viceversa),
+# podrías necesitar esta línea después de todas las definiciones de modelos en el archivo
 # Product.model_rebuild()
