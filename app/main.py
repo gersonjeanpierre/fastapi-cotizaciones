@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from app.api import api_router # Importa el api_router de tu nueva estructura
 from app.core.database import Base, engine # Para la creación de tablas (si no usas migraciones)
 from app.models import * # Importa todos los modelos para que Base.metadata.create_all() los detecte
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
     title="Quotation API", # Título para la documentación de Swagger UI
@@ -10,6 +11,22 @@ app = FastAPI(
     version="1.0.0",
     docs_url="/docs", # URL para Swagger UI
     redoc_url="/redoc", # URL para ReDoc
+)
+
+# Configuración de CORS
+origins = [
+    "http://localhost",
+    "http://localhost:4200", # La URL donde se ejecutará tu aplicación Angular
+    # Puedes añadir otras URLs si tu frontend se desplegará en otro dominio
+    # "https://your-frontend-domain.com",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,       # Lista de orígenes permitidos
+    allow_credentials=True,      # Permitir el envío de cookies en las solicitudes de origen cruzado
+    allow_methods=["*"],         # Métodos HTTP permitidos (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],         # Cabeceras HTTP permitidas
 )
 
 # Esto creará las tablas en la base de datos si aún no existen
