@@ -4,13 +4,14 @@ from typing import Optional, List
 from datetime import datetime
 
 class CustomerBase(BaseModel):
-    entity_type: str
+    clientTypeId: int
+    entityType: str
     ruc: Optional[str] = None
     dni: Optional[str] = None
     name: Optional[str] = None
-    last_name: Optional[str] = None
-    business_name: Optional[str] = None
-    phone_number: Optional[str] = None
+    lastName: Optional[str] = None
+    businessName: Optional[str] = None
+    phoneNumber: Optional[str] = None
     email: Optional[str] = None
 
 class CustomerCreate(CustomerBase):
@@ -18,8 +19,8 @@ class CustomerCreate(CustomerBase):
 
 class Customer(CustomerBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     # Si quieres incluir las órdenes de un cliente:
     # orders: List["Order"] = []

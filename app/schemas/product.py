@@ -5,18 +5,18 @@ from decimal import Decimal
 
 class ProductBase(BaseModel):
     name: str
-    base_price_final: Decimal
-    base_price_printer: Decimal
-    image: Optional[str] = None
-    thumbnail: Optional[str] = None
+    type: str
+    unityMeasure: str
+    baseCost: Decimal    
+    imageUrl: Optional[str] = None
 
 class ProductCreate(ProductBase):
     pass
 
 class Product(ProductBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     # Si quieres cargar las opciones extra junto con el producto,
     # descomenta la siguiente línea y asegúrate de importar ProductExtraOption

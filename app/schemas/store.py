@@ -11,8 +11,8 @@ class StoreCreate(StoreBase):
 
 class Store(StoreBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     # Si quieres cargar las órdenes relacionadas con la tienda, descomenta:
     # from .order import Order # Importación relativa

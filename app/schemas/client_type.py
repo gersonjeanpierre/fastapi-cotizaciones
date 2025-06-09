@@ -5,16 +5,16 @@ from datetime import datetime
 from decimal import Decimal
 
 class ClientTypeBase(BaseModel):
-    type_name: str
-    profit_margin: Decimal
+    typeName: str
+    profitMargin: Decimal
 
 class ClientTypeCreate(ClientTypeBase):
     pass
 
 class ClientType(ClientTypeBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     class Config:
         from_attributes = True

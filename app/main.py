@@ -33,6 +33,6 @@ app.add_middleware(
 # Esto es útil para el desarrollo inicial, pero en producción usarías un sistema de migraciones (ej. Alembic)
 # Ya lo hicimos con Laravel, así que en teoría no necesitas esto.
 # Sin embargo, si quieres que FastAPI maneje la creación de tablas en el futuro, puedes descomentarlo.
-# Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 app.include_router(api_router, prefix="/api/v1") # Incluye el router principal de tu API versionada

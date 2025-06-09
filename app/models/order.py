@@ -8,13 +8,13 @@ class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer, primary_key=True, index=True)
-    customer_id = Column(Integer, ForeignKey("customers.id"), nullable=False)
-    store_id = Column(Integer, ForeignKey("store.id"), nullable=False)
-    order_status_id = Column(Integer, ForeignKey("order_statuses.id"), nullable=True)
-    total_amount = Column(DECIMAL(10, 2), nullable=False)
+    customerId = Column(Integer, ForeignKey("customers.id"), nullable=False)
+    storeId = Column(Integer, ForeignKey("store.id"), nullable=False)
+    orderStatusId = Column(Integer, ForeignKey("order_statuses.id"), nullable=True)
+    totalAmount = Column(DECIMAL(10, 2), nullable=False)
     description = Column(String(150), nullable=True)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    createdAt = Column(DateTime, default=func.now())
+    updatedAt = Column(DateTime, default=func.now(), onupdate=func.now())
 
     customer = relationship("Customer", back_populates="orders")
     store = relationship("Store", back_populates="orders")

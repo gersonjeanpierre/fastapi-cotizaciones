@@ -10,7 +10,7 @@ class Store(Base):
     id = Column(Integer, primary_key=True, index=True)
     code = Column(CHAR(8), nullable=False)
     description = Column(String(100), nullable=False)
-    created_at = Column(DateTime, default=func.now())
-    updated_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    createdAt = Column(DateTime, default=func.now())
+    updatedAt = Column(DateTime, default=func.now(), onupdate=func.now())
 
     orders = relationship("Order", back_populates="store")

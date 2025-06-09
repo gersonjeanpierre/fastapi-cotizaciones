@@ -11,8 +11,8 @@ class OrderStatusCreate(OrderStatusBase):
 
 class OrderStatus(OrderStatusBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     # Si quieres cargar las órdenes relacionadas con este estado, descomenta:
     # from .order import Order # Importación relativa

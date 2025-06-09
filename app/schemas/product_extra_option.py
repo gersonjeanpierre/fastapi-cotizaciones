@@ -7,18 +7,17 @@ from decimal import Decimal
 # from .product import Product
 
 class ProductExtraOptionBase(BaseModel):
-    product_id: int
+    productId: int
     description: str
-    base_price_final: Decimal
-    base_price_printer: Decimal
+    baseCost: Decimal
 
 class ProductExtraOptionCreate(ProductExtraOptionBase):
     pass
 
 class ProductExtraOption(ProductExtraOptionBase):
     id: int
-    created_at: Optional[datetime] = None
-    updated_at: Optional[datetime] = None
+    createdAt: Optional[datetime] = None
+    updatedAt: Optional[datetime] = None
 
     # Si quieres cargar el objeto Product relacionado al leer una ProductExtraOption,
     # descomenta la siguiente línea.
