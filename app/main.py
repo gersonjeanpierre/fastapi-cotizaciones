@@ -15,8 +15,8 @@ app = FastAPI(
 
 # Configuración de CORS
 origins = [
-    "http://localhost",
-    "http://localhost:4200", # La URL donde se ejecutará tu aplicación Angular
+    "(http://127.0.0.0.1)",
+    "http://127.0.0.1:4200", # La URL donde se ejecutará tu aplicación Angular
     # Puedes añadir otras URLs si tu frontend se desplegará en otro dominio
     # "https://your-frontend-domain.com",
 ]
