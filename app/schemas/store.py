@@ -1,24 +1,31 @@
-from pydantic import BaseModel
-from typing import Optional, List
+# app/schemas/store.py
+from pydantic import BaseModel, Field, EmailStr
+from typing import Optional
 from datetime import datetime
 
 class StoreBase(BaseModel):
-    code: str # char(8)
-    description: str # varchar(100)
+    name: str = Field(..., max_length=100)
+    code: Optional[str] = Field(..., max_length=10)
+    address: Optional[str] = Field(..., max_length=255)
+    phone_number: Optional[str] = Field(None, max_length=15)
+    email: Optional[EmailStr] = Field(None)
 
 class StoreCreate(StoreBase):
-    pass # No hay campos adicionales requeridos para la creación
+    pass
 
-class Store(StoreBase):
+class StoreUpdate(BaseModel):
+    name: Optional[str] = Field(..., max_length=100)
+    code: Optional[str] = Field(..., max_length=10)
+    address: Optional[str] = Field(..., max_length=255)
+    phone_number: Optional[str] = Field(None, max_length=15)
+    email: Optional[EmailStr] = Field(None)
+
+class StoreInDB(StoreBase):
     id: int
-    createdAt: Optional[datetime] = None
-    updatedAt: Optional[datetime] = None
+    create_at: datetime
+    update_at: datetime
+    delete_at: Optional[datetime] = None
 
-    # Si quieres cargar las órdenes relacionadas con la tienda, descomenta:
-    # from .order import Order # Importación relativa
-    # orders: List[Order] = []
-
-    class Config:
-        from_attributes = True # Permite que el modelo Pydantic lea datos de un objeto ORM
-
-# Store.model_rebuild() # Descomentar si hay referencias circulares en este archivo o con otros
+    model_config = {
+        "from_attributes": True
+    }

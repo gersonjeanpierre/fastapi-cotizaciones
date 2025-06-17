@@ -3,7 +3,7 @@ from typing import List, Optional
 from datetime import datetime
 
 from app.models import product as models # Importa el modelo Product
-from app.schemas import product as schemas # Importa los esquemas de Product
+from app.schemas import product_type as schemas # Importa los esquemas de Product
 
 # GET all products
 def get_products(db: Session, skip: int = 0, limit: int = 100):

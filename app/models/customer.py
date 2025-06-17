@@ -1,24 +1,24 @@
 # app/models/customer.py
-from sqlalchemy import Column, Integer, String, CHAR, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, DateTime, func, ForeignKey, CHAR
 from sqlalchemy.orm import relationship
-from sqlalchemy.sql import func
-from app.core.database import Base # Importa Base
+from app.core.database import Base
 
 class Customer(Base):
     __tablename__ = "customers"
 
     id = Column(Integer, primary_key=True, index=True)
-    clientTypeId = Column(Integer, ForeignKey("client_types.id"), nullable=False)
-    entityType = Column(CHAR(1), nullable=False)
-    ruc = Column(CHAR(11), nullable=True)
-    dni = Column(CHAR(8), nullable=True)
-    name = Column(String(35), nullable=True)
-    lastName = Column(String(40), nullable=True)
-    businessName = Column(String(150), nullable=True)
-    phoneNumber = Column(String(15), nullable=True)
-    email = Column(String(60), nullable=True)
-    createdAt = Column(DateTime, default=func.now())
-    updatedAt = Column(DateTime, default=func.now(), onupdate=func.now())
+    type_client_id = Column(Integer, ForeignKey("type_clients.id"), nullable=False)
+    entity_type = Column(CHAR(1), nullable=False) # 'N' o 'J'
+    ruc = Column(String(11), unique=True, index=True, nullable=True) # Puede ser nulo, pero único si existe
+    dni = Column(String(8), unique=True, index=True, nullable=True)   # Puede ser nulo, pero único si existe
+    name = Column(String(35), nullable=True) # Solo para persona natural
+    last_name = Column(String(40), nullable=True) # Solo para persona natural
+    business_name = Column(String(150), nullable=True) # Solo para persona jurídica
+    phone_number = Column(String(15), nullable=True)
+    email = Column(String(100), unique=True, index=True, nullable=False) # Email siempre requerido y único
+    create_at = Column(DateTime, default=func.now())
+    update_at = Column(DateTime, default=func.now(), onupdate=func.now())
+    delete_at = Column(DateTime, nullable=True)
 
-    orders = relationship("Order", back_populates="customer")
-    client_type = relationship("ClientType", back_populates="customers")
+    type_client = relationship("TypeClient", back_populates="customers")
+    orders = relationship("Order", back_populates="customer") # Relación con Orders

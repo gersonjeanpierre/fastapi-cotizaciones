@@ -1,15 +1,46 @@
 # app/schemas/__init__.py
-from .client_type import ClientType, ClientTypeBase, ClientTypeCreate
-from .product import Product, ProductBase, ProductCreate
-from .product_extra_option import ProductExtraOption, ProductExtraOptionBase, ProductExtraOptionCreate
-from .customer import Customer, CustomerBase, CustomerCreate
-from .store import Store, StoreBase, StoreCreate
-from .order_status import OrderStatus, OrderStatusBase, OrderStatusCreate 
+from .customer import (
+    CustomerCreate,
+    CustomerUpdate,
+    CustomerInDB,
+)
+from .store import (
+    StoreCreate,
+    StoreUpdate,
+    StoreInDB,
+)
+from .order import (
+    OrderCreate,
+    OrderUpdate,
+    OrderInDB,
+    OrderDetailCreate,
+    OrderDetailInDB,
+    OrderDetailExtraOptionInDB,
+)
+from .product import (
+    ProductCreate,
+    ProductUpdate,
+    ProductInDB,
+    ProductExtraOptionInDB,
+)
+from .extra_option import (
+    ExtraOptionCreate,
+    ExtraOptionUpdate,
+    ExtraOptionInDB,
+)
+from .order_status import (
+    OrderStatusCreate,
+    OrderStatusUpdate,
+    OrderStatusInDB,
+)
+from .type_client import (
+    TypeClientCreate,
+    TypeClientUpdate,
+    TypeClientInDB,
+)
+from .product_type import (
+    ProductTypeCreate,
+    ProductTypeUpdate,
+    ProductTypeInDB,
+)
 
-
-
-# Para manejar referencias circulares entre modelos Pydantic
-# Product.model_rebuild()
-# ProductExtraOption.model_rebuild()
-# Customer.model_rebuild()
-# etc.

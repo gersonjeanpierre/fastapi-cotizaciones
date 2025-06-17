@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from app.models import client_type as models
+from app.models import type_client as models
 from app.schemas import client_type as schemas
 
 # Obtener todos los tipos de cliente

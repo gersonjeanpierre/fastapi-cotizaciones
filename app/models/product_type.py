@@ -1,17 +1,15 @@
-# app/models/order_status.py
+# app/models/product_type.py
 from sqlalchemy import Column, Integer, String, Text, DateTime, func
 from sqlalchemy.orm import relationship
 from app.core.database import Base
 
-class OrderStatus(Base):
-    __tablename__ = "order_status"
+class ProductType(Base):
+    __tablename__ = "product_types"
 
     id = Column(Integer, primary_key=True, index=True)
-    code = Column(String(10), unique=True, nullable=False)
-    name = Column(String(50), unique=True, nullable=False)
+    name = Column(String(100), unique=True, nullable=False)
     description = Column(Text, nullable=True)
     create_at = Column(DateTime, default=func.now())
-    update_at = Column(DateTime, default=func.now(), onupdate=func.now())
     delete_at = Column(DateTime, nullable=True)
 
-    orders = relationship("Order", back_populates="status")
+    products = relationship("ProductProductType", back_populates="product_type")
