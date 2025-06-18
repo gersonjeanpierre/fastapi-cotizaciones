@@ -1,12 +1,2 @@
 __pycache__/
-app/__pycache__/
-app/api/__pycache__/
-app/api/v1/__pycache__/
-app/api/v1/endpoints/__pycache__/
-app/api/v1/models/__pycache__/
-app/api/v1/schemas/__pycache__/
-app/api/v1/services/__pycache__/
-app/core/__pycache__/
-app/crud/__pycache__/
-app/models/__pycache__/
-app/schemas/__pycache__/
+**/__pycache__/
